@@ -5,44 +5,36 @@
     box-sizing: border-box;
 }
 
-:root {
-    --heading-color: #ffffff;
-    --body-color: #e6eef7;
-    --accent-color: #60d5f3;
-}
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     background-color: #0a0d14;
-    color: var(--body-color);
+    color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* ---------- TEXT RULES (HARD OVERRIDE) ---------- */
-
-/* ALL HEADINGS */
+/* FORCE ALL TEXT TO WHITE */
 h1, h2, h3, h4, h5, h6,
+p, span, li, a, div,
 .hero-title,
-.feature-title,
-.technical-title {
-    color: var(--heading-color);
-}
-
-/* ALL BODY / EXPLANATION TEXT */
-p,
+.hero-subtitle,
 .hero-description,
+.feature-title,
 .feature-description,
+.technical-title,
 .technical-description,
 .list-item span,
+.stat-label,
+.stat-value,
 .footer-copy,
 .footer-links a,
 .nav-links a,
-.hero-subtitle {
-    color: var(--body-color);
+.logo-text,
+.btn {
+    color: #ffffff !important;
 }
 
-/* ---------- WebGL Canvas ---------- */
+/* WebGL Canvas */
 #webgl-canvas {
     position: fixed;
     top: 0;
@@ -93,14 +85,7 @@ p,
     align-items: center;
 }
 
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: var(--heading-color);
-}
-
-/* Hero */
+/* Hero Section */
 .hero {
     padding: 6rem 1.5rem;
 }
@@ -120,27 +105,23 @@ p,
     margin-bottom: 3rem;
 }
 
-/* Buttons */
+/* Buttons (text white, accent via border/bg only) */
 .btn-primary {
     background-color: rgba(96, 213, 243, 0.15);
     border: 1px solid rgba(96, 213, 243, 0.6);
-    color: var(--accent-color);
 }
 
-/* Feature Cards */
+.btn-secondary {
+    border: 1px solid #4b5563;
+}
+
+/* Cards */
 .feature-card,
 .stats-card {
     border: 1px solid rgba(75, 85, 99, 0.6);
     padding: 2rem;
     backdrop-filter: blur(4px);
     background-color: rgba(17, 24, 39, 0.65);
-}
-
-/* Feature Titles */
-.feature-title {
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
 }
 
 /* Technical Section */
@@ -155,10 +136,27 @@ p,
     border-top: 1px solid rgba(75, 85, 99, 0.5);
 }
 
-/* Accent hover */
+/* Remove color changes on hover */
 .footer-links a:hover,
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: #ffffff;
 }
 
-/* Responsive typography stays unchanged */
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content,
+.feature-card,
+.technical-content,
+.stats-card {
+    animation: fadeInUp 0.8s ease-out;
+}
