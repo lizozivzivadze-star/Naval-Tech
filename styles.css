@@ -13,6 +13,11 @@ body {
     line-height: 1.6;
 }
 
+/* Global text contrast override */
+p, span, li, a, div {
+    color: rgba(240, 245, 255, 0.95);
+}
+
 /* WebGL Canvas */
 #webgl-canvas {
     position: fixed;
@@ -100,7 +105,7 @@ body {
 }
 
 .nav-links a {
-    color: #e0e7ff;
+    color: rgba(240, 245, 255, 0.9);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -140,12 +145,12 @@ body {
 }
 
 .hero-subtitle {
-    color: #b4c6e7;
+    color: rgba(240, 245, 255, 0.9);
 }
 
 .hero-description {
     font-size: 1.125rem;
-    color: #c8d6f0;
+    color: rgba(240, 245, 255, 0.92);
     font-weight: 300;
     line-height: 1.7;
     max-width: 42rem;
@@ -181,7 +186,7 @@ body {
 
 .btn-secondary {
     border: 1px solid #4b5563;
-    color: #e0e7ff;
+    color: rgba(240, 245, 255, 0.9);
 }
 
 .btn-secondary:hover {
@@ -203,7 +208,7 @@ body {
     border: 1px solid rgba(75, 85, 99, 0.6);
     padding: 2rem;
     backdrop-filter: blur(4px);
-    background-color: rgba(17, 24, 39, 0.3);
+    background-color: rgba(17, 24, 39, 0.55);
     transition: border-color 0.3s ease;
 }
 
@@ -237,7 +242,7 @@ body {
 }
 
 .feature-description {
-    color: #c8d6f0;
+    color: rgba(240, 245, 255, 0.92);
     font-size: 0.875rem;
     line-height: 1.6;
     font-weight: 300;
@@ -264,7 +269,7 @@ body {
 }
 
 .technical-description {
-    color: #c8d6f0;
+    color: rgba(240, 245, 255, 0.92);
     line-height: 1.7;
     margin-bottom: 2rem;
     font-weight: 300;
@@ -291,7 +296,7 @@ body {
 }
 
 .list-item span {
-    color: #e0e7ff;
+    color: rgba(240, 245, 255, 0.92);
     letter-spacing: 0.025em;
 }
 
@@ -299,7 +304,7 @@ body {
     border: 1px solid rgba(75, 85, 99, 0.6);
     padding: 2rem;
     backdrop-filter: blur(4px);
-    background-color: rgba(17, 24, 39, 0.3);
+    background-color: rgba(17, 24, 39, 0.55);
 }
 
 .stat-item {
@@ -315,7 +320,7 @@ body {
 
 .stat-label {
     font-size: 0.75rem;
-    color: #b4c6e7;
+    color: rgba(240, 245, 255, 0.85);
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
 }
@@ -342,7 +347,7 @@ body {
 
 .footer-copy {
     font-size: 0.875rem;
-    color: #b4c6e7;
+    color: rgba(240, 245, 255, 0.9);
     font-weight: 300;
 }
 
@@ -353,7 +358,7 @@ body {
 }
 
 .footer-links a {
-    color: #b4c6e7;
+    color: rgba(240, 245, 255, 0.85);
     text-decoration: none;
     transition: color 0.3s ease;
 }
