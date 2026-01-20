@@ -1,4 +1,6 @@
-/* Reset & Base Styles */
+/* ===============================
+   RESET & BASE
+================================ */
 * {
     margin: 0;
     padding: 0;
@@ -13,41 +15,68 @@ body {
     line-height: 1.6;
 }
 
-/* Global text contrast override */
-p, span, li, a, div {
-    color: rgba(240, 245, 255, 0.95);
+/* FORCE ALL TEXT TO PURE WHITE */
+h1, h2, h3, h4, h5, h6,
+p, span, li, a, div,
+.hero-title,
+.hero-subtitle,
+.hero-description,
+.feature-title,
+.feature-description,
+.technical-title,
+.technical-description,
+.list-item span,
+.stat-label,
+.stat-value,
+.footer-copy,
+.footer-links a,
+.nav-links a,
+.logo-text,
+.badge,
+.btn {
+    color: #ffffff !important;
 }
 
-/* WebGL Canvas */
+/* ===============================
+   WEBGL — HERO ONLY
+================================ */
+
+/* Canvas only affects hero */
 #webgl-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    pointer-events: none;
 }
 
-/* Fallback Background */
-#fallback-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0a0d14 0%, #0f1420 50%, #141a28 100%);
-    z-index: 0;
-    display: none;
+/* Hero becomes the WebGL container */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 1.5rem;
 }
 
-#fallback-bg.active {
-    display: block;
+/* Fallback background only for hero */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #0a0d14 0%,
+        #0f1420 50%,
+        #141a28 100%
+    );
+    z-index: -1;
 }
 
-/* Content Wrapper */
+/* ===============================
+   CONTENT
+================================ */
 .content-wrapper {
     position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
 .container {
@@ -56,393 +85,106 @@ p, span, li, a, div {
     padding: 0 1.5rem;
 }
 
-/* Header */
+/* ===============================
+   HEADER
+================================ */
 .header {
     padding: 2rem 1.5rem;
 }
 
-.nav {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(96, 213, 243, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-inner {
-    width: 24px;
-    height: 24px;
-    border: 1px solid rgba(96, 213, 243, 0.8);
-}
-
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: #ffffff;
-}
-
-.nav-links {
-    display: none;
-    gap: 2rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-}
-
-.nav-links a {
-    color: rgba(240, 245, 255, 0.9);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #60d5f3;
-}
-
-/* Hero Section */
-.hero {
-    padding: 6rem 1.5rem;
-}
-
+/* ===============================
+   HERO
+================================ */
 .hero-content {
     max-width: 56rem;
-}
-
-.badge {
-    display: inline-block;
-    padding: 0.375rem 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    border: 1px solid rgba(96, 213, 243, 0.5);
-    color: #60d5f3;
-    background-color: rgba(96, 213, 243, 0.08);
-    backdrop-filter: blur(4px);
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 200;
-    letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 2rem;
-    color: #ffffff;
-}
-
-.hero-subtitle {
-    color: rgba(240, 245, 255, 0.9);
 }
 
 .hero-description {
     font-size: 1.125rem;
-    color: rgba(240, 245, 255, 0.92);
-    font-weight: 300;
     line-height: 1.7;
     max-width: 42rem;
     margin-bottom: 3rem;
 }
 
-.hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
+/* ===============================
+   BUTTONS
+================================ */
 .btn {
     padding: 1rem 2rem;
     font-size: 0.875rem;
     letter-spacing: 0.1em;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: transparent;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background: none;
 }
 
-.btn-primary {
-    background-color: rgba(96, 213, 243, 0.15);
-    border: 1px solid rgba(96, 213, 243, 0.6);
-    color: #60d5f3;
-}
-
-.btn-primary:hover {
-    background-color: rgba(96, 213, 243, 0.25);
-    border-color: #60d5f3;
-}
-
-.btn-secondary {
-    border: 1px solid #4b5563;
-    color: rgba(240, 245, 255, 0.9);
-}
-
-.btn-secondary:hover {
-    border-color: #9ca3af;
-    color: #ffffff;
-}
-
-/* Features Section */
+/* ===============================
+   FEATURES
+================================ */
 .features {
     padding: 6rem 1.5rem;
-}
-
-.features-grid {
-    display: grid;
-    gap: 2rem;
+    background-color: #0a0d14;
 }
 
 .feature-card {
-    border: 1px solid rgba(75, 85, 99, 0.6);
+    background-color: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(255,255,255,0.15);
     padding: 2rem;
-    backdrop-filter: blur(4px);
-    background-color: rgba(17, 24, 39, 0.55);
-    transition: border-color 0.3s ease;
 }
 
-.feature-card:hover {
-    border-color: rgba(96, 213, 243, 0.5);
-}
-
-.feature-number {
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(96, 213, 243, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #60d5f3;
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
-    transition: border-color 0.3s ease;
-}
-
-.feature-card:hover .feature-number {
-    border-color: #60d5f3;
-}
-
-.feature-title {
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    margin-bottom: 1rem;
-    color: #ffffff;
-}
-
-.feature-description {
-    color: rgba(240, 245, 255, 0.92);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    font-weight: 300;
-}
-
-/* Technical Section */
+/* ===============================
+   TECHNICAL
+================================ */
 .technical {
     padding: 6rem 1.5rem;
-    border-top: 1px solid rgba(31, 41, 55, 0.5);
-}
-
-.technical-grid {
-    display: grid;
-    gap: 4rem;
-}
-
-.technical-title {
-    font-size: 2rem;
-    font-weight: 200;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-}
-
-.technical-description {
-    color: rgba(240, 245, 255, 0.92);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    font-weight: 300;
-}
-
-.technical-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.list-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.875rem;
-}
-
-.list-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #60d5f3;
-    flex-shrink: 0;
-}
-
-.list-item span {
-    color: rgba(240, 245, 255, 0.92);
-    letter-spacing: 0.025em;
+    background-color: #0a0d14;
 }
 
 .stats-card {
-    border: 1px solid rgba(75, 85, 99, 0.6);
-    padding: 2rem;
-    backdrop-filter: blur(4px);
-    background-color: rgba(17, 24, 39, 0.55);
+    background-color: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
-.stat-item {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(75, 85, 99, 0.4);
-    margin-bottom: 1.5rem;
-}
-
-.stat-item-last {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    color: rgba(240, 245, 255, 0.85);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-}
-
-.stat-value {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    color: #60d5f3;
-}
-
-/* Footer */
+/* ===============================
+   FOOTER — HARD ISOLATION
+================================ */
 .footer {
+    position: relative;
+    z-index: 10;
     padding: 3rem 1.5rem;
-    border-top: 1px solid rgba(75, 85, 99, 0.5);
+    background-color: #0a0d14;
+    border-top: 1px solid rgba(255,255,255,0.15);
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+.footer * {
+    color: #ffffff !important;
 }
 
-.footer-copy {
-    font-size: 0.875rem;
-    color: rgba(240, 245, 255, 0.9);
-    font-weight: 300;
-}
-
-.footer-links {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.875rem;
-}
-
-.footer-links a {
-    color: rgba(240, 245, 255, 0.85);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #60d5f3;
-}
-
-/* Responsive Design */
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (min-width: 768px) {
-    .header {
-        padding: 2rem 3rem;
-    }
-
-    .hero {
-        padding: 8rem 3rem;
-    }
-
     .hero-title {
         font-size: 4.5rem;
-    }
-
-    .hero-buttons {
-        flex-direction: row;
-    }
-
-    .features {
-        padding: 6rem 3rem;
-    }
-
-    .features-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-    }
-
-    .technical {
-        padding: 6rem 3rem;
-    }
-
-    .technical-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer {
-        padding: 3rem 3rem;
-    }
-
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .nav-links {
-        display: flex;
     }
 }
 
 @media (min-width: 1024px) {
-    .header {
-        padding: 2rem 4rem;
-    }
-
-    .hero {
-        padding: 8rem 4rem;
-    }
-
     .hero-title {
         font-size: 6rem;
     }
-
-    .features {
-        padding: 6rem 4rem;
-    }
-
-    .technical {
-        padding: 6rem 4rem;
-    }
-
-    .footer {
-        padding: 3rem 4rem;
-    }
 }
 
-/* Animations */
+/* ===============================
+   ANIMATION
+================================ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -452,11 +194,4 @@ p, span, li, a, div {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.hero-content,
-.feature-card,
-.technical-content,
-.stats-card {
-    animation: fadeInUp 0.8s ease-out;
 }
