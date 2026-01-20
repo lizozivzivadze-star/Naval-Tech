@@ -1,4 +1,6 @@
-/* Reset & Base Styles */
+/* =========================================
+   1. RESET & BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,15 +9,23 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    background-color: #0a0d14;
-    color: #ffffff;
-    overflow-x: hidden;
+    background-color: #0a0d14; /* Dark background */
+    color: #ffffff;            /* Base white color */
+    overflow-x: hidden;        /* Prevent horizontal scroll */
     line-height: 1.6;
+    min-height: 100vh;
 }
 
-/* FORCE ALL TEXT TO WHITE */
+/* =========================================
+   2. THE "FORCE WHITE" VISIBILITY FIX
+   ========================================= */
+/* This is the "Nuclear Option." It targets every common text element 
+   and your specific classes to ensure they are strictly #ffffff.
+   The !important tag overrides any browser defaults or inheritance issues.
+*/
 h1, h2, h3, h4, h5, h6,
-p, span, li, a, div,
+p, span, strong, em, li, a, div,
+label, input, button, textarea,
 .hero-title,
 .hero-subtitle,
 .hero-description,
@@ -34,38 +44,34 @@ p, span, li, a, div,
     color: #ffffff !important;
 }
 
-/* WebGL Canvas — isolated */
+/* Ensure links stay white even when hovered/visited */
+a:visited, a:hover, a:active, a:focus {
+    color: #ffffff !important;
+}
+
+/* =========================================
+   3. LAYERING (Z-INDEX) FIXES
+   ========================================= */
+/* This ensures the background stays in the back 
+   and the text (especially the footer) stays on top.
+*/
+
+/* The Background Canvas */
 #webgl-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    mix-blend-mode: normal;
+    z-index: 0;          /* Level 0: Bottom */
+    pointer-events: none; /* Clicks pass through to content */
 }
 
-/* Fallback Background */
-#fallback-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0a0d14 0%, #0f1420 50%, #141a28 100%);
-    z-index: 0;
-    display: none;
-}
-
-#fallback-bg.active {
-    display: block;
-}
-
-/* Content Wrapper — always above canvas */
+/* The Wrapper that holds your website content */
 .content-wrapper {
     position: relative;
-    z-index: 5;
+    z-index: 10;         /* Level 10: Top (Visible) */
+    width: 100%;
 }
 
 .container {
@@ -74,7 +80,11 @@ p, span, li, a, div,
     padding: 0 1.5rem;
 }
 
-/* Header */
+/* =========================================
+   4. COMPONENT STYLES
+   ========================================= */
+
+/* Header & Nav */
 .header {
     padding: 2rem 1.5rem;
 }
@@ -90,6 +100,7 @@ p, span, li, a, div,
 /* Hero Section */
 .hero {
     padding: 6rem 1.5rem;
+    position: relative;
 }
 
 .hero-title {
@@ -107,69 +118,44 @@ p, span, li, a, div,
     margin-bottom: 3rem;
 }
 
-/* Buttons (text white, accents via borders/backgrounds only) */
-.btn {
-    padding: 1rem 2rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
-    border: none;
-    cursor: pointer;
-    background: none;
-}
-
+/* Buttons */
 .btn-primary {
     background-color: rgba(96, 213, 243, 0.15);
     border: 1px solid rgba(96, 213, 243, 0.6);
+    /* Note: text color is handled by the force block above */
 }
 
 .btn-secondary {
-    border: 1px solid #4b5563;
+    border: 1px solid #ffffff; /* Changed from grey to white for visibility */
+    background: transparent;
 }
 
-/* Feature Cards */
-.features {
-    padding: 6rem 1.5rem;
-}
-
+/* Cards (Features / Stats) */
 .feature-card,
 .stats-card {
-    border: 1px solid rgba(75, 85, 99, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Brighter border */
     padding: 2rem;
     backdrop-filter: blur(4px);
-    background-color: rgba(17, 24, 39, 0.65);
+    background-color: rgba(17, 24, 39, 0.75); /* Darker bg for contrast */
 }
 
 /* Technical Section */
 .technical {
     padding: 6rem 1.5rem;
-    border-top: 1px solid rgba(31, 41, 55, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(10, 13, 20, 0.5); /* Slight tint to help text pop */
 }
 
-/* Footer — fully isolated and readable */
+/* Footer */
 .footer {
-    position: relative;
-    z-index: 20;
     padding: 3rem 1.5rem;
-    background-color: #0a0d14;
-    border-top: 1px solid rgba(75, 85, 99, 0.5);
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Force footer text visibility */
-.footer * {
-    color: #ffffff !important;
-}
-
-/* Disable color shifts on hover */
-.footer-links a:hover,
-.nav-links a:hover {
-    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* Giving the footer a solid background prevents the 
+       canvas from bleeding through and making text hard to read 
+    */
+    background-color: #0a0d14; 
+    position: relative;
+    z-index: 20; /* Ensure footer is always top priority */
 }
 
 /* Animations */
@@ -188,5 +174,5 @@ p, span, li, a, div,
 .feature-card,
 .technical-content,
 .stats-card {
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.8s ease-out forwards; /* 'forwards' ensures it stays visible */
 }
