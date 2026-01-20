@@ -255,10 +255,11 @@ body {
     letter-spacing: -0.02em;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    color: #f3f4f6;
 }
 
 .technical-description {
-    color: #9ca3af;
+    color: #d1d5db;
     line-height: 1.7;
     margin-bottom: 2rem;
     font-weight: 300;
@@ -280,11 +281,11 @@ body {
 .list-dot {
     width: 6px;
     height: 6px;
-    background-color: rgba(34, 211, 238, 0.6);
+    background-color: rgba(34, 211, 238, 0.8);
 }
 
 .list-item span {
-    color: #d1d5db;
+    color: #e5e7eb;
     letter-spacing: 0.025em;
 }
 
@@ -308,7 +309,7 @@ body {
 
 .stat-label {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: #9ca3af;
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
 }
@@ -335,7 +336,7 @@ body {
 
 .footer-copy {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #9ca3af;
     font-weight: 300;
 }
 
@@ -346,7 +347,7 @@ body {
 }
 
 .footer-links a {
-    color: #6b7280;
+    color: #9ca3af;
     text-decoration: none;
     transition: color 0.3s ease;
 }
